@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: black;
+                margin:0;
+                padding:0;
+            }
+
+            #signupForm{
+                background-color: rgb(36, 227, 227);
+                width:700px;
+                max-width:100%;
+                height:550px;
+                min-height:100%;
+                margin: auto;
+                display:flex;
+                justify-content: center;
+                margin-top:100px;
+                border-radius: 10px;
+                flex-direction: column;
+               
+                    
+            }
+            form{
+               
+                text-align: center;
+            }
+
+            #signupForm input{
+                width:400px;
+                height:50px;
+                font-size: 16px;
+                margin:5px;
+                border-radius: 5px;
+                border: none;
+                padding-left: 20px;
+                box-sizing:border-box;
+                
+  
+            }
+
+            #signupForm input:focus{
+                background-color: rgb(223, 220, 220);
+                color: black;
+                
+            }
+
+            .submitBtn{
+                width:150px;
+                height:40px;
+                font-size:16px;
+                background-color: rgb(3, 89, 113);   
+                color:white; 
+                border-radius: 5px;   
+                margin-top:5px;        
+            }
+            .submitBtn:hover{
+                cursor: pointer;
+                color:rgb(16, 16, 16);
+                
+            }
+
+            #signupForm a{
+                     text-decoration: none;
+            }
+           
+        </style>
+    </head>
+    <body>
+        <div id="signupForm">
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %}
+
+                
+                <h1>Sign Up</h1>
+                {% if error %}
+                <p style="color:rgb(94, 92, 93); display: flex; padding-left:150px;">{{ error }}</p>
+                {% endif %}
+                <input type="email" placeholder="Email" name="email"> 
+                <input type="text"  name="firstname" placeholder="First Name">
+                <input type="text"  name="lastname" placeholder="Last Name"> 
+                <input type="password" name="password" placeholder="Password">
+                <input type="text" name="phonenumber" placeholder="Phone Number"> 
+                <div><button type="submit" class="submitBtn">Sign Up</button></div>
+                <p>Already have an account?<a href="http://127.0.0.1:8000/auth/login/">Login</a></p>
+            </form>
+        </div>
+        
+    </body>
+</html>

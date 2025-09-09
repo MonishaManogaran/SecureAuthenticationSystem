@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: black;
+                margin:0;
+                padding:0;
+            }
+
+            #loginForm{
+                background-color: rgb(36, 227, 227);
+                width:600px;
+                max-width:100%;
+                height:350px;
+                min-height:100%;
+                margin: auto;
+                display:flex;
+                justify-content: center;
+                margin-top:100px;
+                border-radius: 10px;
+                flex-direction: column;
+                margin-top: 170px;
+               
+                    
+            }
+
+             #loginForm input{
+                width:400px;
+                height:50px;
+                font-size: 16px;
+                margin:5px;
+                border-radius: 5px;
+                border: none;
+                padding-left: 20px;
+                box-sizing:border-box;
+                
+            }
+
+             #loginForm input:focus{
+                background-color: rgb(223, 220, 220);
+                color: black;
+                
+            }
+
+            form{
+                text-align: center;
+            }
+
+            .loginBtn{
+                width:150px;
+                height:40px;
+                font-size:16px;
+                background-color: rgb(3, 89, 113);   
+                color:white; 
+                border-radius: 5px;  
+                margin-top: 5px;         
+            }
+            .loginBtn:hover{
+                cursor: pointer;
+                color:rgb(16, 16, 16);
+                
+            }
+            
+            #loginForm a{
+                     text-decoration: none;
+            }
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <div id="loginForm">
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                
+                <h1>Log In</h1>
+                {% if error %}
+                <p style="color:rgb(105, 104, 104); display: flex; padding-left:100px;;">{{ error }}</p>
+                {% endif %}
+                <input type="email" name="email" placeholder="Email">
+                <input type="password"  name="password" placeholder="Password">
+                <div><button type="submit" class="loginBtn">Log in</button></div>
+                <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </form>
+        </div>
+        
+    </body>
+</html>
